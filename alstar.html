@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALSTAR | ALSCO</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+
+        .primary-maroon {
+            color: #88113b;
+        }
+
+        .bg-maroon {
+            background-color: #88113b;
+        }
+
+        .text-main {
+            color: #1f2937;
+        }
+
+        .btn-modern {
+            padding: 12px 32px;
+            border-radius: 9999px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: fit-content;
+        }
+
+        .btn-maroon {
+            background-color: #88113b;
+            color: white;
+        }
+
+        .btn-maroon:hover {
+            background-color: #6d0d2f;
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #88113b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .border-custom {
+            border: 2px solid #d1d5db;
+        }
+
+        .border-b-custom {
+            border-bottom: 2px solid #d1d5db;
+        }
+
+        .border-t-custom {
+            border-top: 2px solid #d1d5db;
+        }
+
+        .border-x-custom {
+            border-left: 2px solid #d1d5db;
+            border-right: 2px solid #d1d5db;
+        }
+
+        #menu-toggle:checked~#mobile-menu {
+            display: flex;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <section class="py-12 lg:py-16 border-b-custom">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-16">
+                    <span class="primary-maroon font-bold tracking-[0.2em] uppercase text-xs mb-4">ALSCO
+                        Initiative</span>
+                    <h1 class="text-4xl md:text-5xl font-black text-main tracking-tight uppercase mb-8">
+                        ALSTAR
+                    </h1>
+                    <a href="https://forms.office.com/r/P80rpPjZsF" target="_blank"
+                        class="btn-modern btn-maroon text-base py-3 px-10">
+                        Become an ALSTAR
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <h3 class="text-xl font-bold text-main">About ALSTAR</h3>
+                            </div>
+                            <p class="mb-6 text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <a href="#about" class="btn-modern btn-maroon text-sm py-2.5 px-6">Learn More</a>
+                    </div>
+
+                    <div class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <h3 class="text-xl font-bold text-main">ALSTAR Points Tracker</h3>
+                            </div>
+                            <p class="mb-6 text-justify">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                        <a href="#tracker" onclick="smoothScroll(event, 'tracker')"
+                            class="btn-modern btn-maroon text-sm py-2.5 px-6">View Points</a>
+                    </div>
+
+                    <div class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <h3 class="text-xl font-bold text-main">ALSTAR Calendar</h3>
+                            </div>
+                            <p class="mb-6 text-justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <a href="#calendar" class="btn-modern btn-maroon text-sm py-2.5 px-6">Open Calendar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-12 lg:py-16 border-b-custom">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8"></div>
+        </section>
+
+        <section id="tracker" class="py-12 lg:py-16 border-b-custom bg-[#ffffff]">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-10">
+                    <h2 class="text-3xl font-black uppercase tracking-tight mb-8">ALSTAR Points Tracker</h2>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg">
+                        <input id="studentIdInput" type="text" placeholder="Enter Your Student ID"
+                            class="border-custom rounded-full px-6 py-3 w-full focus:outline-none focus:border-[#88113b] transition-colors text-main">
+                        <button id="lookupBtn" onclick="lookupStudent()"
+                            class="btn-modern btn-maroon whitespace-nowrap text-base py-3 px-10 mx-auto sm:mx-0">
+                            View Points
+                        </button>
+                    </div>
+                </div>
+
+                <div id="resultContainer" class="border-custom rounded-[2.5rem] p-8 md:p-10">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-custom pb-6 mb-8 gap-4">
+                        <div>
+                            <p id="resIdLabel" class="text-xs font-bold tracking-[0.2em] uppercase primary-maroon mb-1">
+                                Registered Name</p>
+                            <p id="resName" class="text-3xl font-black text-main">---</p>
+                        </div>
+                        <div class="text-left md:text-right">
+                            <div id="resStatusBadge"
+                                class="px-5 py-2 rounded-full text-xs font-bold uppercase bg-maroon text-white">
+                                WAITING FOR ID
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                        <div class="flex flex-col items-center">
+                            <span class="text-4xl font-black text-main mb-1"><span
+                                    id="resParticipation">0</span>/5</span>
+                            <span class="text-xs font-bold uppercase tracking-widest primary-maroon">Participation
+                                Points</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center border-t-custom border-b-custom sm:border-t-0 sm:border-b-0 sm:border-x-custom py-6 sm:py-0">
+                            <span class="text-4xl font-black text-main mb-1"><span id="resVolunteer">0</span>/6</span>
+                            <span class="text-xs font-bold uppercase tracking-widest primary-maroon">Volunteer
+                                Points</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-4xl font-black text-main mb-1"><span id="resTalk">0</span>/5</span>
+                            <span class="text-xs font-bold uppercase tracking-widest primary-maroon">Talk / Workshop
+                                Points</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calendar" class="py-12 lg:py-16">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8"></div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+    <script>
+        const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTsNSz6Ta0hIfwSVw-PWJN7UwPp-YH2jXRSDF7yUCTH-bkgddCh8QWv21dPal6yhfl941u8-0QDqo5v/pub?output=csv";
+
+        function smoothScroll(e, id) {
+            e.preventDefault();
+            const element = document.getElementById(id);
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navHeight;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+
+        async function lookupStudent() {
+            const studentId = document.getElementById("studentIdInput").value.trim();
+            if (!studentId) return;
+
+            const btn = document.getElementById("lookupBtn");
+            const originalText = "View Points";
+            btn.textContent = "Loading";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(SHEET_URL);
+                const text = await response.text();
+                const rows = text.split("\n").slice(1);
+
+                const match = rows.map(r => r.split(",")).find(r => r[0] === studentId);
+
+                const badge = document.getElementById("resStatusBadge");
+
+                if (!match) {
+                    document.getElementById("resName").textContent = "---";
+                    document.getElementById("resParticipation").textContent = "0";
+                    document.getElementById("resVolunteer").textContent = "0";
+                    document.getElementById("resTalk").textContent = "0";
+                    badge.textContent = "ID NOT FOUND";
+                    badge.className = "px-5 py-2 rounded-full text-xs font-bold uppercase bg-maroon text-white";
+                    return;
+                }
+
+                const participation = Number(match[2]);
+                const volunteer = Number(match[3]);
+                const talk = Number(match[4]);
+
+                const eligible = participation >= 5 && volunteer >= 6 && talk >= 5;
+
+                document.getElementById("resName").textContent = match[1];
+                document.getElementById("resParticipation").textContent = participation;
+                document.getElementById("resVolunteer").textContent = volunteer;
+                document.getElementById("resTalk").textContent = talk;
+
+                if (eligible) {
+                    badge.textContent = "ELIGIBLE FOR CERTIFICATE";
+                    badge.className = "px-5 py-2 rounded-full text-xs font-bold uppercase bg-green-700 text-white";
+                } else {
+                    badge.textContent = "NOT ELIGIBLE FOR CERTIFICATE";
+                    badge.className = "px-5 py-2 rounded-full text-xs font-bold uppercase bg-maroon text-white";
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

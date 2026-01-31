@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments | ALSCO</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #1f2937;
+        }
+
+        .primary-maroon {
+            color: #88113b;
+        }
+
+        .bg-maroon {
+            background-color: #88113b;
+        }
+
+        .text-main {
+            color: #1f2937;
+        }
+
+        .btn-modern {
+            padding: 12px 32px;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-maroon {
+            background-color: #88113b;
+            color: white;
+        }
+
+        .btn-maroon:hover {
+            background-color: #6d0d2f;
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.025em;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #88113b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .border-custom {
+            border: 2px solid #d1d5db;
+        }
+
+        .border-b-custom {
+            border-bottom: 2px solid #d1d5db;
+        }
+
+        .border-t-custom {
+            border-top: 2px solid #d1d5db;
+        }
+
+        /* Mobile Menu Toggle Logic */
+        #menu-toggle:checked~#mobile-menu {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-white">
+
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <section class="py-12 lg:py-16 border-b-custom">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center">
+                    <span class="primary-maroon font-bold tracking-[0.2em] uppercase text-xs mb-4">Core Structure</span>
+
+                    <h1 class="text-4xl md:text-5xl font-black text-main tracking-tight uppercase">
+                        Departments
+                    </h1>
+
+                    <div class="flex items-center gap-4 mt-8">
+                        <div class="w-12 h-[2px] bg-gray-300"></div>
+                        <div class="w-2 h-2 rounded-full bg-maroon"></div>
+                        <div class="w-12 h-[2px] bg-gray-300"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 lg:py-16">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+
+                    <div class="border-custom bg-white overflow-hidden rounded-2xl group">
+                        <img src="images/ld.avif" alt="Leadership Development" class="w-full h-56 md:h-72 object-cover">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-2xl font-bold mb-4">Leadership Development</h3>
+                            <p class="leading-relaxed text-base text-main text-justify">
+                                Leadership Development promotes soft skills and sports to foster interpersonal growth
+                                and ensure all A-Level students develop personally and professionally.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border-custom bg-white overflow-hidden rounded-2xl group">
+                        <img src="images/comserve.avif" alt="Community Service"
+                            class="w-full h-56 md:h-72 object-cover">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-2xl font-bold mb-4">Community Service</h3>
+                            <p class="leading-relaxed text-base text-main text-justify">
+                                Community Service, or COMSERVE for short, organises events for our members that focus on
+                                charitable, environmental, or community-orientated work.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border-custom bg-white overflow-hidden rounded-2xl group">
+                        <img src="images/sw.avif" alt="Student Welfare" class="w-full h-56 md:h-72 object-cover">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-2xl font-bold mb-4">Student Welfare</h3>
+                            <p class="leading-relaxed text-base text-main text-justify">
+                                Student Welfare strives to foster a supportive and holistic environment within the
+                                community by curating initiatives that enhance students’ mental, social, and academic
+                                well-being.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border-custom bg-white overflow-hidden rounded-2xl group">
+                        <img src="images/pr.avif" alt="Public Relations" class="w-full h-56 md:h-72 object-cover">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-2xl font-bold mb-4">Public Relations</h3>
+                            <p class="leading-relaxed text-base text-main text-justify">
+                                Public Relations focuses on creating creative and engaging content to communicate
+                                effectively and build a strong, connected A-Level community.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
