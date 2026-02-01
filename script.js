@@ -63,46 +63,17 @@ function updateSiteContent() {
     };
 
     // --- HERO SECTION ---
-    setImage("hero-img", siteContent.hero.image);
-    setText("hero-desc", siteContent.hero.description);
-    setLink("hero-handbook-btn", siteContent.hero.handbook_pdf);
+    setImage("hero-img", siteContent.home.hero.image);
+    setText("hero-desc", siteContent.home.hero.description);
+    setLink("hero-handbook-btn", siteContent.home.hero.handbook_pdf);
 
-    // --- FEATURED EVENT ---
-    setImage("event-img", siteContent.featuredEvent.image);
-    setText("event-title", siteContent.featuredEvent.title);
-    setText("event-desc", siteContent.featuredEvent.description);
-    setText("event-reg-btn-text", siteContent.featuredEvent.button_text); // Set button text
-
-    // Logic: If button says "Registration is Open", link to form. Otherwise, disable or link to events page.
-    const eventBtn = document.getElementById("event-reg-btn");
-    if (eventBtn) {
-        if (siteContent.featuredEvent.button_text.toLowerCase().includes("open")) {
-            eventBtn.href = siteContent.featuredEvent.registration_link;
-        } else {
-            eventBtn.href = "/events"; // Default fallback
-        }
-    }
-
-    // --- NEWSLETTER ---
-    setImage("news-img", siteContent.newsletter.image);
-    setText("news-title", siteContent.newsletter.title);
-    setText("news-desc", siteContent.newsletter.description);
-    setLink("news-read-btn", siteContent.newsletter.pdf_link);
-
-    // --- FAQ SECTION ---
-    // We loop through the 3 FAQs in the array
-    siteContent.faq.forEach((item, index) => {
-        const num = index + 1; // 1, 2, 3
-        setText(`faq-q${num}`, item.question);
-        setText(`faq-a${num}`, item.answer);
-    });
-
+    // --- AFFILIATES ---
     const affiliateContainer = document.getElementById("affiliates-grid");
-    if (affiliateContainer && siteContent.affiliates) {
+    if (affiliateContainer && siteContent.home.affiliates) {
         // Clear any existing content first
         affiliateContainer.innerHTML = "";
 
-        siteContent.affiliates.forEach(partner => {
+        siteContent.home.affiliates.forEach(partner => {
             // Create the container for one affiliate
             const wrapper = document.createElement("div");
             wrapper.className = "flex flex-col items-center gap-3 group min-w-[120px]";
@@ -112,7 +83,7 @@ function updateSiteContent() {
             img.src = partner.image;
             img.alt = partner.name;
             // Style: Grayscale by default, color on hover (modern effect)
-            img.className = "w-16 h-16 md:w-20 md:h-20 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 filter grayscale group-hover:grayscale-0";
+            img.className = "w-16 h-16 w-auto md:h-44 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 filter grayscale group-hover:grayscale-0";
 
             // Create the name text
             const name = document.createElement("span");
@@ -126,6 +97,35 @@ function updateSiteContent() {
         });
     }
 
+    // --- FEATURED EVENT ---
+    setImage("event-img", siteContent.home.featuredEvent.image);
+    setText("event-title", siteContent.home.featuredEvent.title);
+    setText("event-desc", siteContent.home.featuredEvent.description);
+    setText("event-reg-btn-text", siteContent.home.featuredEvent.button_text); // Set button text
+
+    // Logic: If button says "Registration is Open", link to form. Otherwise, disable or link to events page.
+    const eventBtn = document.getElementById("event-reg-btn");
+    if (eventBtn) {
+        if (siteContent.home.featuredEvent.button_text.toLowerCase().includes("open")) {
+            eventBtn.href = siteContent.home.featuredEvent.registration_link;
+        } else {
+            eventBtn.href = "/events"; // Default fallback
+        }
+    }
+
+    // --- NEWSLETTER ---
+    setImage("news-img", siteContent.home.newsletter.image);
+    setText("news-title", siteContent.home.newsletter.title);
+    setText("news-desc", siteContent.home.newsletter.description);
+    setLink("news-read-btn", siteContent.home.newsletter.pdf_link);
+
+    // --- FAQ SECTION ---
+    // We loop through the 3 FAQs in the array
+    siteContent.home.faq.forEach((item, index) => {
+        const num = index + 1; // 1, 2, 3
+        setText(`faq-q${num}`, item.question);
+        setText(`faq-a${num}`, item.answer);
+    });
 }
 
 // 4. Initialize everything
