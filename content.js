@@ -47,7 +47,7 @@ const siteContent = {
         ],
 
         affiliates: [
-            { name: "Malaysian Bioscience Scholars", image: "images/mbios.png" }, // Replace with real logo path
+            { name: "Malaysian Bioscience Scholars", image: "images/home/mbios.png" }, // Replace with real logo path
             // To add more, just copy the line above:
             // { name: "New Partner", image: "images/partner_logo.png" }, 
         ],
@@ -166,17 +166,105 @@ const siteContent = {
         ]
     },
 
+
     // 4. EVENTS PAGE
-    events: {
-        headerTitle: "Upcoming & Past Events",
-        // You can even store lists of events here if you want to get advanced later
+    eventsPage: {
+        // SECTION 1: UPCOMING
+        // The FIRST event in this list will automatically be the "Big Feature Card".
+        // The REST will be smaller side-by-side cards.
+        upcoming: [
+            {
+                title: "A-Level Leadership Camp",
+                date: "Saturday, 7th February 2026 to Sunday, 8th February 2026",
+                image: "images/events/upcoming/ALC-AE.png",
+                description: "A Leadership Camp organised by Leadership Development department that aims to providing A-Level Students an opportunity to explore leadership not as a title, but as a lived experience shaped by communication, empathy and courage.",
+                registration_link: "https://forms.google.com/orientation",
+                button_text: "Closed"
+            },
+            // Registration up coming, put button_text: "Coming Soon". Registratoin opened: "Register Now" this will activate button and links to google form. Registration closed, put "Closed"
+
+        ],
+
+        // SECTION 2: PAST EVENTS (Archive)
+        past: [
+            {
+                title: "Charity Run 2025",
+                date: "Dec 12, 2025",
+                department: "COMSERVE",
+                description: "Raised RM5000 for local orphanages with over 200 participants.",
+                gallery_link: "https://photos.google.com/share/..." // Link to Google Folder/IG
+            },
+            {
+                title: "Halloween Party",
+                date: "Oct 31, 2025",
+                department: "Student Welfare",
+                description: "A spooky night of fun, games, and costume contests.",
+                gallery_link: "https://instagram.com/p/..."
+            }
+        ]
+    },
+
+    // 5. NEWSLETTERS PAGE
+    newsletterPage: {
+        // 1. HERO SECTION BACKGROUND
+        heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop", // Replace with your image
+
+        // 2. NEWSLETTER CARDS (Top one is "Latest", others are grid)
+        newsletters: [
+            {
+                title: "December Recap: Year End",
+                date: "Dec 2025",
+                description: "A look back at all our achievements this year, including the charity run results and ALSTAR point summaries.",
+                image: "images/newsletters/dec2025_cover.jpg", // Preview image
+                pdf_link: "https://drive.google.com/file/d/...", // PDF download link
+                button_text: "Read Now"
+            },
+            {
+                title: "November Highlights",
+                date: "Nov 2025",
+                description: "Deep dive into the Study Skills Workshop and interview with the new Student Council president.",
+                image: "images/newsletters/nov2025_cover.jpg",
+                pdf_link: "https://drive.google.com/file/d/...",
+                button_text: "Read Now"
+            },
+            {
+                title: "October Spooktacular",
+                date: "Oct 2025",
+                description: "Photos from the Halloween event and upcoming exam schedules.",
+                image: "images/newsletters/oct2025_cover.jpg",
+                pdf_link: "#",
+                button_text: "Coming Soon" // This triggers the disabled state
+            }
+        ]
     },
 
     // 5. CONTACT PAGE
     contact: {
         pageTitle: "Get In Touch",
         subTitle: "We'd love to hear from you."
-    }
+    },
 
-    // ... add 'departments', 'alstar', etc. as needed
+    // 6. ALSTAR PAGE
+    alstarPage: {
+        description: "The ALSTAR (A-Level Student Ambassador) program is a prestigious initiative designed to empower students to represent Sunway College. It bridges the gap between the student body and the administration while fostering leadership and soft skills.",
+
+        difference: "While ALSCO is the elected student committee responsible for governance and major events, ALSTARs are selected ambassadors who focus on volunteering, peer support, and representing the college at official functions. ALSCO members are automatically part of the ALSTAR community.",
+
+        // This array generates the 3 pillars automatically
+        certificate: [
+            { count: 5, label: "Participation Points", desc: "Attend events" },
+            { count: 6, label: "Volunteer Points", desc: "Contribute time" },
+            { count: 5, label: "Talk / Workshop Points", desc: "Join sessions" }
+        ],
+
+        forms: {
+            participation: "https://forms.google.com/participation-link",
+            volunteer: "https://forms.google.com/volunteer-link",
+            talk: "https://forms.google.com/talk-link"
+        },
+
+        // Replace this with your specific Google Calendar Embed URL
+        // To get this: Go to G-Cal Settings > Integrate Calendar > Copy "Public URL to this calendar" or Embed code src
+        calendar: "https://calendar.google.com/calendar/embed?src=en.malaysia%23holiday%40group.v.calendar.google.com&ctz=Asia%2FKuala_Lumpur"
+    },
 };

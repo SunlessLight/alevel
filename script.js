@@ -57,6 +57,7 @@ function updateSiteContent() {
         const el = document.getElementById(id);
         if (el) el.src = src;
     };
+
     // Helper to set link href
     const setLink = (id, url) => {
         const el = document.getElementById(id);
@@ -136,7 +137,7 @@ function updateSiteContent() {
     setText("about-development", siteContent.about.development);
     setText("about-welfare", siteContent.about.welfare);
 
-    // --- COMMITTEE TREE LOGIC ---
+    // -------- COMMITTEE PAGE -------
     const hcContainer = document.getElementById("high-council-tree");
     const deptContainer = document.getElementById("dept-roster");
 
@@ -253,6 +254,216 @@ function updateSiteContent() {
                 setImage(`${dept.id}-img`, dept.image);
                 setText(`${dept.id}-title`, dept.title);
                 setText(`${dept.id}-desc`, dept.description);
+            });
+        }
+    }
+
+    // -------- EVENTS PAGE --------
+    const upcomingContainer = document.getElementById("events-upcoming-container");
+    const pastContainer = document.getElementById("events-past-container");
+
+    // 1. Render UPCOMING Events
+    if (upcomingContainer && siteContent.eventsPage && siteContent.eventsPage.upcoming) {
+        upcomingContainer.innerHTML = "";
+        const events = siteContent.eventsPage.upcoming;
+
+        if (events.length > 0) {
+            // A. FIRST EVENT (Big Featured Card)
+            const feat = events[0];
+            const isFeatDisabled = feat.button_text.toLowerCase().includes("soon") || feat.button_text.toLowerCase().includes("closed");
+
+            const bigCard = `
+                <div class="border-custom rounded-3xl overflow-hidden flex flex-col md:flex-row bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <div class="md:w-3/5 overflow-hidden relative h-auto md:h-full group">
+                        <img src="${feat.image}" alt="${feat.title}" class="max-w-84 h-auto object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="md:w-2/5 p-6 md:p-10 flex flex-col justify-center items-start">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="tag-latest">Featured</span>
+                            <span class="date-chip tracking-tight">${feat.date}</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">${feat.title}</h2>
+                        <p class="leading-relaxed text-base text-main text-justify mb-8">${feat.description}</p>
+                        <a href="${isFeatDisabled ? '#' : feat.registration_link}" target="${isFeatDisabled ? '' : '_blank'}" 
+                           class="btn-modern btn-maroon text-base py-2.5 px-6 w-full sm:w-auto ${isFeatDisabled ? 'opacity-50 cursor-not-allowed bg-gray-400 hover:bg-gray-400' : ''}">
+                           ${feat.button_text}
+                        </a>
+                    </div>
+                </div>`;
+            upcomingContainer.insertAdjacentHTML('beforeend', bigCard);
+
+            // B. REMAINING EVENTS (Grid Layout)
+            if (events.length > 1) {
+                const gridContainer = document.createElement("div");
+                gridContainer.className = "grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10";
+
+                // Loop through index 1 to end
+                for (let i = 1; i < events.length; i++) {
+                    const evt = events[i];
+                    const isDisabled = evt.button_text.toLowerCase().includes("soon") || evt.button_text.toLowerCase().includes("closed");
+
+                    const card = `
+                        <div class="border-custom rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+                            <div class="relative h-24 md:h-32 overflow-hidden group">
+                                <img src="${evt.image}" alt="${evt.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="p-6 md:p-8 flex flex-col flex-grow">
+                                <div class="flex justify-between items-start mb-6">
+                                    <span class="date-chip">${evt.date}</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-4">${evt.title}</h3>
+                                <p class="leading-relaxed text-base text-main text-justify mb-8 flex-grow">${evt.description}</p>
+                                <a href="${isDisabled ? '#' : evt.registration_link}" target="${isDisabled ? '' : '_blank'}" 
+                                   class="btn-modern btn-maroon text-base py-2.5 px-6 w-full sm:w-auto text-center ${isDisabled ? 'opacity-50 cursor-not-allowed bg-gray-400 hover:bg-gray-400' : ''}">
+                                   ${evt.button_text}
+                                </a>
+                            </div>
+                        </div>`;
+                    gridContainer.insertAdjacentHTML('beforeend', card);
+                }
+                upcomingContainer.appendChild(gridContainer);
+            }
+        }
+    }
+
+    // 2. Render PAST Events
+    if (pastContainer && siteContent.eventsPage && siteContent.eventsPage.past) {
+        pastContainer.innerHTML = "";
+        siteContent.eventsPage.past.forEach(evt => {
+            const html = `
+                <div class="border-custom rounded-2xl bg-white p-8 flex flex-col h-full hover:border-[#88113b] transition-colors group">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">${evt.date}</span>
+                        <span class="px-3 py-1 bg-gray-100 rounded-full text-[10px] font-bold text-gray-600 uppercase">${evt.department}</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-[#88113b] transition-colors">${evt.title}</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6 flex-grow">${evt.description}</p>
+                    <a href="${evt.gallery_link}" target="_blank" class="btn-modern btn-ghost w-full text-sm py-2">
+                        View Photos
+                    </a>
+                </div>`;
+            pastContainer.insertAdjacentHTML('beforeend', html);
+        });
+    }
+
+    // --- NEWSLETTER PAGE LOGIC ---
+    const newsletterContainer = document.getElementById("newsletter-list-container");
+    const newsletterHero = document.getElementById("newsletter-hero-bg");
+
+    if (newsletterContainer && siteContent.newsletterPage) {
+
+        // 1. Set Background Image
+        if (newsletterHero) {
+            newsletterHero.style.backgroundImage = `url('${siteContent.newsletterPage.heroImage}')`;
+        }
+
+        // 2. Render Newsletters
+        newsletterContainer.innerHTML = "";
+        const news = siteContent.newsletterPage.newsletters;
+
+        if (news.length > 0) {
+            // A. LATEST NEWSLETTER (The Big Horizontal Card)
+            const latest = news[0];
+            const isLatDisabled = latest.button_text.toLowerCase().includes("soon");
+
+            const latestHTML = `
+                <div class="border-custom rounded-3xl bg-white overflow-hidden flex flex-col md:flex-row shadow-sm hover:shadow-md transition-shadow">
+                    <div class="md:w-3/5 relative h-64 md:h-auto overflow-hidden group">
+                        <img src="${latest.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="md:w-2/5 p-6 md:p-10 flex flex-col justify-center items-start">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="tag-latest">Latest</span>
+                            <span class="date-chip tracking-tight">${latest.date}</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">${latest.title}</h2>
+                        <p class="leading-relaxed text-base text-main text-justify mb-8">${latest.description}</p>
+                        <a href="${isLatDisabled ? '#' : latest.pdf_link}" target="${isLatDisabled ? '' : '_blank'}" 
+                           class="btn-modern btn-maroon text-base py-2.5 px-6 w-full sm:w-auto ${isLatDisabled ? 'opacity-50 cursor-not-allowed bg-gray-400 hover:bg-gray-400' : ''}">
+                            ${latest.button_text}
+                        </a>
+                    </div>
+                </div>`;
+
+            newsletterContainer.insertAdjacentHTML('beforeend', latestHTML);
+
+            // B. OLDER NEWSLETTERS (The Grid)
+            if (news.length > 1) {
+                const gridDiv = document.createElement("div");
+                gridDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10";
+
+                for (let i = 1; i < news.length; i++) {
+                    const item = news[i];
+                    const isDisabled = item.button_text.toLowerCase().includes("soon");
+
+                    const cardHTML = `
+                        <div class="border-custom rounded-3xl bg-white overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                            <div class="h-48 overflow-hidden relative group">
+                                <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            
+                            <div class="p-6 md:p-8 flex flex-col flex-grow">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="date-chip">${item.date}</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3">${item.title}</h3>
+                                <p class="leading-relaxed text-base text-main text-justify mb-8 flex-grow">${item.description}</p>
+                                <div class="flex justify-start">
+                                    <a href="${isDisabled ? '#' : item.pdf_link}" target="${isDisabled ? '' : '_blank'}"
+                                        class="btn-modern btn-maroon text-base py-2.5 px-6 w-full sm:w-auto ${isDisabled ? 'opacity-50 cursor-not-allowed bg-gray-400 hover:bg-gray-400' : ''}">
+                                        ${item.button_text}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>`;
+                    gridDiv.insertAdjacentHTML('beforeend', cardHTML);
+                }
+                newsletterContainer.appendChild(gridDiv);
+            }
+        }
+    }
+
+    // --- ALSTAR PAGE LOGIC ---
+    const alstarContainer = document.getElementById("about-alstar-details");
+
+    if (alstarContainer && siteContent.alstarPage) {
+
+        // 1. Text Content
+        setText("alstar-description-text", siteContent.alstarPage.description);
+        setText("alstar-difference-text", siteContent.alstarPage.difference);
+
+        // 2. Submission Forms
+        setLink("btn-submit-participation", siteContent.alstarPage.forms.participation);
+        setLink("btn-submit-volunteer", siteContent.alstarPage.forms.volunteer);
+        setLink("btn-submit-talk", siteContent.alstarPage.forms.talk);
+
+        // 3. Google Calendar Embed
+        // We use the helper to set the 'src' of the iframe
+        const calFrame = document.getElementById("calendar-frame");
+        if (calFrame) calFrame.src = siteContent.alstarPage.calendar;
+
+        // 4. Dynamic Certificate Roadmap
+        // We look for a container with ID 'certificate-grid'. 
+        // Note: You need to add this ID to your HTML (see Step 3 below).
+        const certGrid = document.getElementById("certificate-grid");
+
+        if (certGrid && siteContent.alstarPage.certificate) {
+            certGrid.innerHTML = ""; // Clear hardcoded HTML
+
+            siteContent.alstarPage.certificate.forEach((item, index) => {
+                // Logic for borders: Middle item gets borders on desktop
+                let borderClass = "";
+                if (index === 1) {
+                    borderClass = "border-t-custom border-b-custom sm:border-t-0 sm:border-b-0 sm:border-x-custom py-6 sm:py-0";
+                }
+
+                const html = `
+                    <div class="flex flex-col items-center ${borderClass}">
+                        <span class="text-4xl font-black text-main mb-1">${item.count}</span>
+                        <span class="text-xs font-bold uppercase tracking-widest primary-maroon">${item.label}</span>
+                    </div>`;
+
+                certGrid.insertAdjacentHTML('beforeend', html);
             });
         }
     }

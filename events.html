@@ -141,72 +141,28 @@
         </section>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
-            <article class="space-y-8 lg:space-y-10">
-                <div class="border-custom rounded-3xl overflow-hidden flex flex-col md:flex-row bg-white">
-                    <div class="md:w-3/5 overflow-hidden relative h-64 md:h-auto">
-                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop"
-                            alt="" class="w-full h-full object-cover">
-                    </div>
-                    <div class="md:w-2/5 p-6 md:p-10 flex flex-col justify-center items-start">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="tag-latest">Featured</span>
-                            <span class="date-chip tracking-tight">Jan 01, 2026</span>
-                        </div>
-                        <h2 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Lorem Ipsum</h2>
-                        <p class="leading-relaxed text-base text-main text-justify mb-8">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.
-                        </p>
-                        <a href="https://forms.google.com" target="_blank"
-                            class="btn-modern btn-maroon text-base py-2.5 px-6 w-full sm:w-auto">Register Now</a>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-                    <div class="border-custom rounded-3xl overflow-hidden bg-white">
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1505235687559-28b5f54645b7?q=80&w=2070&auto=format&fit=crop"
-                                alt="" class="w-full h-48 md:h-64 object-cover">
-                        </div>
-                        <div class="p-6 md:p-8">
-                            <div class="flex justify-between items-start mb-6">
-                                <span class="date-chip">Jan 01, 2026</span>
-                            </div>
-                            <h3 class="text-2xl md:text-3xl font-bold mb-4">Lorem Ipsum</h3>
-                            <p class="leading-relaxed text-base text-main text-justify mb-8">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <a href="https://forms.google.com" target="_blank"
-                                class="btn-modern btn-maroon text-base py-2.5 px-6 w-full sm:w-auto">Register Now</a>
-                        </div>
-                    </div>
-
-                    <div class="border-custom rounded-3xl overflow-hidden bg-white">
-                        <div class="relative">
-                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop"
-                                alt="" class="w-full h-48 md:h-64 object-cover">
-                        </div>
-                        <div class="p-6 md:p-8">
-                            <div class="flex justify-between items-start mb-6">
-                                <span class="date-chip">Jan 01, 2026</span>
-                            </div>
-                            <h3 class="text-2xl md:text-3xl font-bold mb-4">Lorem Ipsum</h3>
-                            <p class="leading-relaxed text-base text-main text-justify mb-8">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <a href="https://forms.google.com" target="_blank"
-                                class="btn-modern btn-maroon text-base py-2.5 px-6 w-full sm:w-auto">Register Now</a>
-                        </div>
-                    </div>
-                </div>
-            </article>
+            <div id="events-upcoming-container" class="space-y-10">
+                <p class="text-center text-gray-400">Loading upcoming events...</p>
+            </div>
         </div>
+
+        <section class="py-16 lg:py-20 bg-gray-50 border-t-custom">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="primary-maroon font-bold tracking-[0.2em] uppercase text-xs">Archive</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-main uppercase mt-2">Past Events</h2>
+                </div>
+
+                <div id="events-past-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <p class="text-center text-gray-400 col-span-full">Loading archive...</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="footer-placeholder"></div>
 
+    <script src="content.js"></script>
     <script src="script.js"></script>
 
 </body>
