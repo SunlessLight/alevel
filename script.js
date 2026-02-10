@@ -44,7 +44,7 @@ function setActiveLink() {
     });
 }
 
-// 3. NEW: Function to Update Content from content.js
+// Website Content Manager
 function updateSiteContent() {
     // Helper to set text content
     const setText = (id, text) => {
@@ -64,13 +64,13 @@ function updateSiteContent() {
         if (el) el.href = url;
     };
 
-    // -------- HOME PAGE --------
-    // --- HERO SECTION ---
+    // 1. HERO PAGE
+    //  A. HERO SECTION
     setImage("hero-img", siteContent.home.hero.image);
     setText("hero-desc", siteContent.home.hero.description);
     setLink("hero-handbook-btn", siteContent.home.hero.handbook_pdf);
 
-    // --- AFFILIATES ---
+    //  B. AFFILIATES 
     const affiliateContainer = document.getElementById("affiliates-grid");
     if (affiliateContainer && siteContent.home.affiliates) {
         // Clear any existing content first
@@ -100,44 +100,44 @@ function updateSiteContent() {
         });
     }
 
-    // --- FEATURED EVENT ---
+    //  C. FEATURED EVENT
     setImage("event-img", siteContent.home.featuredEvent.image);
     setText("event-title", siteContent.home.featuredEvent.title);
     setText("event-desc", siteContent.home.featuredEvent.description);
     setText("event-reg-btn-text", siteContent.home.featuredEvent.button_text); // Set button text
 
-    // Logic: If button says "Registration is Open", link to form. Otherwise, disable or link to events page.
+    //  C1. If button = "Registration is Open", will link to form. Otherwise, will be disable or link to events page.
     const eventBtn = document.getElementById("event-reg-btn");
     if (eventBtn) {
         if (siteContent.home.featuredEvent.button_text.toLowerCase().includes("open")) {
             eventBtn.href = siteContent.home.featuredEvent.registration_link;
         } else {
-            eventBtn.href = "/events"; // Default fallback
+            eventBtn.href = "/events.html"; // Default fallback
         }
     }
 
-    // --- NEWSLETTER ---
+    //  D. NEWSLETTER
     setImage("news-img", siteContent.home.newsletter.image);
     setText("news-title", siteContent.home.newsletter.title);
     setText("news-desc", siteContent.home.newsletter.description);
     setLink("news-read-btn", siteContent.home.newsletter.pdf_link);
 
-    // --- FAQ SECTION ---
-    // We loop through the 3 FAQs in the array
+    //  E. FAQ SECTION
+    // Loop through the 3 FAQs in the array
     siteContent.home.faq.forEach((item, index) => {
         const num = index + 1; // 1, 2, 3
         setText(`faq-q${num}`, item.question);
         setText(`faq-a${num}`, item.answer);
     });
 
-    // -------- ABOUT PAGE --------
+    // 2. ABOUT PAGE
     setText("about-mission-p1", siteContent.about.missionp1);
     setText("about-mission-p2", siteContent.about.missionp2);
     setText("about-representation", siteContent.about.representation);
     setText("about-development", siteContent.about.development);
     setText("about-welfare", siteContent.about.welfare);
 
-    // -------- COMMITTEE PAGE -------
+    // 3. COMMITTEE PAGE
     const hcContainer = document.getElementById("high-council-tree");
     const deptContainer = document.getElementById("dept-roster");
 
@@ -158,11 +158,17 @@ function updateSiteContent() {
                 ? "w-40 h-40 md:w-52 md:h-52"
                 : "w-32 h-32 md:w-40 md:h-40";
 
+            const userQuote = member.quote || "Dedicated to serving the A-Level Student Committee"
+
             card.innerHTML = `
                 <div class="${imgSize} rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] transition-all duration-300 mb-4 shadow-lg p-1 bg-white">
                     
                     <img src="${member.image}" class="w-full h-full object-cover object-top rounded-full">
                     
+                    <div class="absolute inset-0 bg-[#88113b]/90 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                        <p class="text-white text-xs md:text-sm font-medium italic leading-tight">"${userQuote}"</p>
+                    </div>
+
                 </div>
                 <h4 class="font-bold text-lg leading-tight text-main">${member.name}</h4>
                 <p class="text-xs font-bold text-[#88113b] uppercase tracking-widest mt-1">${member.role}</p>
@@ -217,6 +223,10 @@ function updateSiteContent() {
                     <div class="flex flex-col items-center text-center group w-48 md:w-64">
                         <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] transition-all duration-300 mb-4 shadow-lg p-1 bg-white">
                             <img src="${leader.image}" class="w-full h-full object-cover object-top rounded-full">
+
+                            <div class="absolute inset-0 bg-[#88113b]/90 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                                <p class="text-white text-xs md:text-sm font-medium italic leading-tight">"${userQuote}"</p>
+                            </div>
                         </div>
                         <h4 class="font-bold text-lg leading-tight text-main">${leader.name}</h4>
                         <p class="text-xs font-bold text-[#88113b] uppercase tracking-widest mt-1">${leader.role}</p>
@@ -235,6 +245,9 @@ function updateSiteContent() {
                     <div class="flex flex-col items-center text-center group w-48 md:w-64">
                         <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] transition-all duration-300 mb-4 shadow-lg p-1 bg-white">
                             <img src="${member.image}" class="w-full h-full object-cover object-top rounded-full">
+                            <div class="absolute inset-0 bg-[#88113b]/90 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                                <p class="text-white text-xs md:text-sm font-medium italic leading-tight">"${userQuote}"</p>
+                            </div>
                         </div>
                         <h4 class="font-bold text-lg leading-tight text-main">${member.name}</h4>
                         <p class="text-xs font-bold text-[#88113b] uppercase tracking-widest mt-1">${member.role}</p>
@@ -258,11 +271,11 @@ function updateSiteContent() {
         }
     }
 
-    // -------- EVENTS PAGE --------
+    // 4. EVENTS PAGE
     const upcomingContainer = document.getElementById("events-upcoming-container");
     const pastContainer = document.getElementById("events-past-container");
 
-    // 1. Render UPCOMING Events
+    //  A. Render UPCOMING Events
     if (upcomingContainer && siteContent.eventsPage && siteContent.eventsPage.upcoming) {
         upcomingContainer.innerHTML = "";
         const events = siteContent.eventsPage.upcoming;
@@ -326,7 +339,7 @@ function updateSiteContent() {
         }
     }
 
-    // 2. Render PAST Events
+    //  B. Render PAST Events
     if (pastContainer && siteContent.eventsPage && siteContent.eventsPage.past) {
         pastContainer.innerHTML = "";
         siteContent.eventsPage.past.forEach(evt => {
@@ -346,7 +359,7 @@ function updateSiteContent() {
         });
     }
 
-    // --- NEWSLETTER PAGE LOGIC ---
+    //  5. NEWSLETTER PAGE LOGIC
     const newsletterContainer = document.getElementById("newsletter-list-container");
     const newsletterHero = document.getElementById("newsletter-hero-bg");
 
@@ -423,49 +436,26 @@ function updateSiteContent() {
         }
     }
 
-    // --- ALSTAR PAGE LOGIC ---
+    // 6. ALSTAR PAGE
     const alstarContainer = document.getElementById("about-alstar-details");
 
     if (alstarContainer && siteContent.alstarPage) {
 
-        // 1. Text Content
+        // A. Alstar logo
+        setImage("alstar-logo", siteContent.alstarPage.alstar_logo);
+
+        // B. Text Content
         setText("alstar-description-text", siteContent.alstarPage.description);
         setText("alstar-difference-text", siteContent.alstarPage.difference);
 
-        // 2. Submission Forms
+        // C. Submission Forms
         setLink("btn-submit-participation", siteContent.alstarPage.forms.participation);
         setLink("btn-submit-volunteer", siteContent.alstarPage.forms.volunteer);
         setLink("btn-submit-talk", siteContent.alstarPage.forms.talk);
 
-        // 3. Google Calendar Embed
-        // We use the helper to set the 'src' of the iframe
+        // D. Google Calendar Embed
         const calFrame = document.getElementById("calendar-frame");
         if (calFrame) calFrame.src = siteContent.alstarPage.calendar;
-
-        // 4. Dynamic Certificate Roadmap
-        // We look for a container with ID 'certificate-grid'. 
-        // Note: You need to add this ID to your HTML (see Step 3 below).
-        const certGrid = document.getElementById("certificate-grid");
-
-        if (certGrid && siteContent.alstarPage.certificate) {
-            certGrid.innerHTML = ""; // Clear hardcoded HTML
-
-            siteContent.alstarPage.certificate.forEach((item, index) => {
-                // Logic for borders: Middle item gets borders on desktop
-                let borderClass = "";
-                if (index === 1) {
-                    borderClass = "border-t-custom border-b-custom sm:border-t-0 sm:border-b-0 sm:border-x-custom py-6 sm:py-0";
-                }
-
-                const html = `
-                    <div class="flex flex-col items-center ${borderClass}">
-                        <span class="text-4xl font-black text-main mb-1">${item.count}</span>
-                        <span class="text-xs font-bold uppercase tracking-widest primary-maroon">${item.label}</span>
-                    </div>`;
-
-                certGrid.insertAdjacentHTML('beforeend', html);
-            });
-        }
     }
 }
 

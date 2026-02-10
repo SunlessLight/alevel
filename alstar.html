@@ -110,23 +110,6 @@
         .feature-card {
             background-color: #ffffff;
         }
-
-        /* ALSTAR Watermark Style */
-        .hero-watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            opacity: 0.05;
-            /* Adjusted to 0.05 for slightly better visibility */
-            pointer-events: none;
-            z-index: 0;
-        }
     </style>
 </head>
 
@@ -135,59 +118,56 @@
     <div id="navbar-placeholder"></div>
 
     <main>
-        <section class="py-12 lg:py-16 border-b-custom">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <div class="flex flex-col items-center text-center mb-16">
-                    <span class="primary-maroon font-bold tracking-[0.2em] uppercase text-xs mb-4">ALSCO
-                        Initiative</span>
-                    <h1 class="text-4xl md:text-5xl font-black text-main tracking-tight uppercase mb-8">
-                        ALSTAR
-                    </h1>
-                    <a href="https://forms.office.com/r/P80rpPjZsF" target="_blank"
-                        class="btn-modern btn-maroon text-base py-3 px-10 shadow-lg hover:shadow-xl">
-                        Become an ALSTAR
-                    </a>
+        <section class="py-6 lg:py-4 border-b-custom">
+            <div class="flex flex-col items-center text-center mb-16">
+
+                <img id="alstar-logo" alt="ALSTAR Logo" class="w-auto h-auto md:w-auto md:h-auto mb-4 object-contain">
+
+                <a href="https://forms.office.com/r/P80rpPjZsF" target="_blank"
+                    class="btn-modern btn-maroon text-base py-3 px-10 shadow-lg hover:shadow-xl">
+                    Become an ALSTAR
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between h-full bg-white/80 backdrop-blur-sm">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-xl font-bold text-main">About ALSTAR</h3>
+                        </div>
+                        <p class="mb-6 text-justify">Discover the mission behind the A-Level Student Ambassador
+                            program and our role in the community.</p>
+                    </div>
+                    <a href="#about-alstar-details" class="btn-modern btn-ghost text-sm py-2.5 px-6">Learn More</a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div
-                        class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between h-full bg-white/80 backdrop-blur-sm">
-                        <div>
-                            <div class="flex items-center gap-3 mb-4">
-                                <h3 class="text-xl font-bold text-main">About ALSTAR</h3>
-                            </div>
-                            <p class="mb-6 text-justify">Discover the mission behind the A-Level Student Ambassador
-                                program and our role in the community.</p>
+                <div
+                    class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between h-full bg-white/80 backdrop-blur-sm">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-xl font-bold text-main">Points Tracker</h3>
                         </div>
-                        <a href="#about-alstar-details" class="btn-modern btn-ghost text-sm py-2.5 px-6">Learn More</a>
+                        <p class="mb-6 text-justify">Check your current participation status and see how close you
+                            are to certification.</p>
                     </div>
-
-                    <div
-                        class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between h-full bg-white/80 backdrop-blur-sm">
-                        <div>
-                            <div class="flex items-center gap-3 mb-4">
-                                <h3 class="text-xl font-bold text-main">Points Tracker</h3>
-                            </div>
-                            <p class="mb-6 text-justify">Check your current participation status and see how close you
-                                are to certification.</p>
-                        </div>
-                        <a href="#tracker" onclick="smoothScroll(event, 'tracker')"
-                            class="btn-modern btn-ghost text-sm py-2.5 px-6">View Points</a>
-                    </div>
-
-                    <div
-                        class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between h-full bg-white/80 backdrop-blur-sm">
-                        <div>
-                            <div class="flex items-center gap-3 mb-4">
-                                <h3 class="text-xl font-bold text-main">ALSTAR Calendar</h3>
-                            </div>
-                            <p class="mb-6 text-justify">Stay updated with upcoming workshops, volunteer opportunities,
-                                and events.</p>
-                        </div>
-                        <a href="#alstar-calendar-section" onclick="smoothScroll(event, 'alstar-calendar-section')"
-                            class="btn-modern btn-ghost text-sm py-2.5 px-6">Open Calendar</a>
-                    </div>
+                    <a href="#tracker" onclick="smoothScroll(event, 'tracker')"
+                        class="btn-modern btn-ghost text-sm py-2.5 px-6">View Points</a>
                 </div>
+
+                <div
+                    class="feature-card border-custom p-8 rounded-[2rem] flex flex-col justify-between h-full bg-white/80 backdrop-blur-sm">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <h3 class="text-xl font-bold text-main">ALSTAR Calendar</h3>
+                        </div>
+                        <p class="mb-6 text-justify">Stay updated with upcoming workshops, volunteer opportunities,
+                            and events.</p>
+                    </div>
+                    <a href="#alstar-calendar-section" onclick="smoothScroll(event, 'alstar-calendar-section')"
+                        class="btn-modern btn-ghost text-sm py-2.5 px-6">Open Calendar</a>
+                </div>
+            </div>
             </div>
         </section>
 

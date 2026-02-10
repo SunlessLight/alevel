@@ -14,11 +14,11 @@ const siteContent = {
 
         // --- FEATURED EVENT ---
         featuredEvent: {
-            image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
-            title: "Orientation 2026",
-            description: "Join us for our biggest orientation yet! Meet your peers, explore the campus, and get ready for an exciting year ahead. Lunch and merchandise provided.",
+            image: "images/events/upcoming/ALC-AE.png",
+            title: "A-Level Leadership Camp 2026",
+            description: "A Leadership Camp organised by Leadership Development department that aims to providing A-Level Students an opportunity to explore leadership not as a title, but as a lived experience shaped by communication, empathy and courage.",
             registration_link: "https://forms.google.com/your-event-form",
-            button_text: "Registration is Open" // Change to "Registration Upcoming" or "Closed" when needed
+            button_text: "Registration Closed" // Change to "Registration Upcoming" or "Closed" when needed
         },
 
         // --- LATEST NEWSLETTER ---
@@ -67,14 +67,14 @@ const siteContent = {
         // LEVEL 1: EXECUTIVE (Order matters for the layout!)
         highCouncil: [
             // Row 1: President
-            { role: "President", name: "TAY HUI ER", image: "images/committee/high_council/president.png" },
+            { role: "President", name: "TAY HUI ER", image: "images/committee/high_council/president.png", quote: "Leadership is not about being in charge. It is about taking care of those in your charge." },
 
             // Row 2: VPs
             { role: "Vice President of External Affairs", name: "NICHOLAS WONG JUN YEW", image: "images/committee/high_council/vpe.png" },
             { role: "Vice President of Internal Affairs", name: "DANIEL @ HTOO HTET ZAW", image: "images/committee/high_council/vpi.png" },
 
             // Row 3: Secs & Treasurer
-            { role: "Secretary", name: "CHUA RYEE EN", image: "images/committee/high_council/sec1.png" },
+            { role: "Secretary", name: "CHUE RYEE EN", image: "images/committee/high_council/sec1.png" },
             { role: "Secretary", name: "AUSTIN LAU HONG SHEN", image: "images/committee/high_council/sec2.png" },
             { role: "Treasurer", name: "EVAN YEOH JIN QUAN", image: "images/committee/high_council/treasurer.png" },
         ],
@@ -115,10 +115,7 @@ const siteContent = {
                     { role: "Deputy Director", name: "CHONG HUI XIN", image: "images/committee/public_rel/PRdeputyDirector.png" }
                 ],
                 members: [
-                    { role: "General Member", name: "AUSTIN LAU HONG SHEN", image: "images/committee/public_rel/member1.png" },
-                    { role: "General Member", name: "EE CHAO JIAN", image: "images/committee/public_rel/member2.png" },
-                    { role: "General Member", name: "KAY THARI MON", image: "images/committee/public_rel/member3.png" },
-                    { role: "General Member", name: "SAN DAR WIN", image: "images/committee/public_rel/member4.png" },
+                    { role: "General Member", name: "AUSTIN LAU HONG SHEN", image: "images/committee/public_rel/member1.png" }
                 ],
             },
             {
@@ -166,12 +163,9 @@ const siteContent = {
         ]
     },
 
-
     // 4. EVENTS PAGE
     eventsPage: {
         // SECTION 1: UPCOMING
-        // The FIRST event in this list will automatically be the "Big Feature Card".
-        // The REST will be smaller side-by-side cards.
         upcoming: [
             {
                 title: "A-Level Leadership Camp",
@@ -182,29 +176,29 @@ const siteContent = {
                 button_text: "Closed"
             },
             // Registration up coming, put button_text: "Coming Soon". Registratoin opened: "Register Now" this will activate button and links to google form. Registration closed, put "Closed"
-
+            // To add more evnets, just copy the format above and paste and change the details accordingly.
         ],
 
         // SECTION 2: PAST EVENTS (Archive)
         past: [
             {
-                title: "Charity Run 2025",
-                date: "Dec 12, 2025",
-                department: "COMSERVE",
-                description: "Raised RM5000 for local orphanages with over 200 participants.",
-                gallery_link: "https://photos.google.com/share/..." // Link to Google Folder/IG
+                title: "A Charity Extravaganze 2026",
+                date: "Saturday, 17th January 2026",
+                department: "ALSCO",
+                description: "Raised RM1000+ through ALSTAR First Event for an Old Folks Home",
+                gallery_link: "https://drive.google.com/drive/folders/1I6pPY6tEC4EdMWYO424xfXIkBB3iY9yI" // Link to Google Folder/IG
             },
             {
-                title: "Halloween Party",
-                date: "Oct 31, 2025",
-                department: "Student Welfare",
-                description: "A spooky night of fun, games, and costume contests.",
+                title: "July 2025 Installation Night",
+                date: "Thrusday, 8th Janaury 2026",
+                department: "SST (2 Secretaries & Treasurer)",
+                description: "A Formal Night of Installation of the new July 2025 A-Level Student Committee members",
                 gallery_link: "https://instagram.com/p/..."
             }
         ]
     },
 
-    // 5. NEWSLETTERS PAGE
+    // 5. NEWSLETTERS PAGE 
     newsletterPage: {
         // 1. HERO SECTION BACKGROUND
         heroImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop", // Replace with your image
@@ -238,14 +232,10 @@ const siteContent = {
         ]
     },
 
-    // 5. CONTACT PAGE
-    contact: {
-        pageTitle: "Get In Touch",
-        subTitle: "We'd love to hear from you."
-    },
-
     // 6. ALSTAR PAGE
     alstarPage: {
+        alstar_logo: "images/alstar/alstar_logo.svg",
+
         description: "The ALSTAR (A-Level Student Ambassador) program is a prestigious initiative designed to empower students to represent Sunway College. It bridges the gap between the student body and the administration while fostering leadership and soft skills.",
 
         difference: "While ALSCO is the elected student committee responsible for governance and major events, ALSTARs are selected ambassadors who focus on volunteering, peer support, and representing the college at official functions. ALSCO members are automatically part of the ALSTAR community.",
@@ -257,6 +247,7 @@ const siteContent = {
             { count: 5, label: "Talk / Workshop Points", desc: "Join sessions" }
         ],
 
+        // Update here for the points form
         forms: {
             participation: "https://forms.google.com/participation-link",
             volunteer: "https://forms.google.com/volunteer-link",
