@@ -70,13 +70,13 @@ const siteContent = {
             { role: "President", name: "TAY HUI ER", image: "images/committee/high_council/president.png", quote: "Leadership is not about being in charge. It is about taking care of those in your charge." },
 
             // Row 2: VPs
-            { role: "Vice President of External Affairs", name: "NICHOLAS WONG JUN YEW", image: "images/committee/high_council/vpe.png" },
-            { role: "Vice President of Internal Affairs", name: "DANIEL @ HTOO HTET ZAW", image: "images/committee/high_council/vpi.png" },
+            { role: "Vice President of External Affairs", name: "NICHOLAS WONG JUN YEW", image: "images/committee/high_council/vpe.png", quote: "" },
+            { role: "Vice President of Internal Affairs", name: "DANIEL @ HTOO HTET ZAW", image: "images/committee/high_council/vpi.png", quote: "" },
 
             // Row 3: Secs & Treasurer
-            { role: "Secretary", name: "CHUE RYEE EN", image: "images/committee/high_council/sec1.png" },
-            { role: "Secretary", name: "AUSTIN LAU HONG SHEN", image: "images/committee/high_council/sec2.png" },
-            { role: "Treasurer", name: "EVAN YEOH JIN QUAN", image: "images/committee/high_council/treasurer.png" },
+            { role: "Secretary", name: "CHUE RYEE EN", image: "images/committee/high_council/sec1.png", quote: "" },
+            { role: "Secretary", name: "AUSTIN LAU HONG SHEN", image: "images/committee/high_council/sec2.png", quote: "" },
+            { role: "Treasurer", name: "EVAN YEOH JIN QUAN", image: "images/committee/high_council/treasurer.png", quote: "" },
         ],
 
         // LEVEL 2: DEPARTMENTS
@@ -84,53 +84,53 @@ const siteContent = {
             {
                 name: "Leadership Development",
                 leaders: [
-                    { role: "Director", name: "LAI ZHENG YI", image: "images/committee/leadership_dev/LDdirector.png" },
-                    { role: "Deputy Director", name: "CHLOE LIM JING YAN", image: "images/committee/leadership_dev/LDduputyDirector.png" }
+                    { role: "Director", name: "LAI ZHENG YI", image: "images/committee/leadership_dev/LDdirector.png", quote: "" },
+                    { role: "Deputy Director", name: "CHLOE LIM JING YAN", image: "images/committee/leadership_dev/LDduputyDirector.png", quote: "" }
                 ],
                 // Just list names for general members to save space, or use objects if you have photos
                 members: [
-                    { role: "General Member", name: "ONG XI WEN", image: "images/committee/leadership_dev/member1.png" },
-                    { role: "General Member", name: "EVAN YEOH JIN QUAN", image: "images/committee/leadership_dev/member2.png" },
-                    { role: "General Member", name: "TAY HUI ER", image: "images/committee/leadership_dev/member3.png" },
-                    { role: "General Member", name: "VINCENT KHOO WEI WEN", image: "images/committee/leadership_dev/member4.png" },
+                    { role: "General Member", name: "ONG XI WEN", image: "images/committee/leadership_dev/member1.png", quote: "" },
+                    { role: "General Member", name: "EVAN YEOH JIN QUAN", image: "images/committee/leadership_dev/member2.png", quote: "" },
+                    { role: "General Member", name: "TAY HUI ER", image: "images/committee/leadership_dev/member3.png", quote: "" },
+                    { role: "General Member", name: "VINCENT KHOO WEI WEN", image: "images/committee/leadership_dev/member4.png", quote: "" },
                 ],
             },
             {
                 name: "Community Service",
                 leaders: [
-                    { role: "Director", name: "EE JING XUAN", image: "images/committee/comserve/CSdirector.png" },
-                    { role: "Deputy Director", name: "NYEIN YU SAN", image: "images/committee/comserve/CSdeputyDirector.png" }
+                    { role: "Director", name: "EE JING XUAN", image: "images/committee/comserve/CSdirector.png", quote: "" },
+                    { role: "Deputy Director", name: "NYEIN YU SAN", image: "images/committee/comserve/CSdeputyDirector.png", quote: "" }
                 ],
                 members: [
-                    { role: "General Member", name: "DAKSSHI NATH PILLAY", image: "images/committee/comserve/member1.png" },
-                    { role: "General Member", name: "NICHOLAS WONG JUN YEW", image: "images/committee/comserve/member2.png" },
-                    { role: "General Member", name: "TEH SIN HUI", image: "images/committee/comserve/member3.png" },
-                    { role: "General Member", name: "YAP QIN HUEY", image: "images/committee/comserve/member4.png" },
+                    { role: "General Member", name: "DAKSSHI NATH PILLAY", image: "images/committee/comserve/member1.png", quote: "" },
+                    { role: "General Member", name: "NICHOLAS WONG JUN YEW", image: "images/committee/comserve/member2.png", quote: "" },
+                    { role: "General Member", name: "TEH SIN HUI", image: "images/committee/comserve/member3.png", quote: "" },
+                    { role: "General Member", name: "YAP QIN HUEY", image: "images/committee/comserve/member4.png", quote: "" },
                 ],
             },
             {
                 name: "Public Relations",
                 leaders: [
-                    { role: "Director", name: "AYSHALYNN SALAHUDDIN", image: "images/committee/public_rel/PRdirector.png" },
-                    { role: "Deputy Director", name: "CHONG HUI XIN", image: "images/committee/public_rel/PRdeputyDirector.png" }
+                    { role: "Director", name: "AYSHALYNN SALAHUDDIN", image: "images/committee/public_rel/PRdirector.png", quote: "" },
+                    { role: "Deputy Director", name: "CHONG HUI XIN", image: "images/committee/public_rel/PRdeputyDirector.png", quote: "" }
                 ],
                 members: [
-                    { role: "General Member", name: "AUSTIN LAU HONG SHEN", image: "images/committee/public_rel/member1.png" }
+                    { role: "General Member", name: "AUSTIN LAU HONG SHEN", image: "images/committee/public_rel/member1.png", quote: "" }
                 ],
             },
             {
                 name: "Student Welfare",
                 leaders: [
-                    { role: "Director", name: "YAP CHERN XI", image: "images/committee/student_wel/SWdirector.png" },
-                    { role: "Deputy Director", name: "SEW SUN LOONG", image: "images/committee/student_wel/SWdeputyDirector.png" }
+                    { role: "Director", name: "YAP CHERN XI", image: "images/committee/student_wel/SWdirector.png", quote: "" },
+                    { role: "Deputy Director", name: "SEW SUN LOONG", image: "images/committee/student_wel/SWdeputyDirector.png", quote: "" }
                 ],
                 members: [
-                    { role: "General Member", name: "LAW JIA HERNG", image: "images/committee/student_wel/member1.png" },
-                    { role: "General Member", name: "JOSHUA LEE CHENG AN", image: "images/committee/student_wel/member2.png" },
-                    { role: "General Member", name: "GOH JAY NING", image: "images/committee/student_wel/member3.png" },
-                    { role: "General Member", name: "DANIEL WONG WENG SENG", image: "images/committee/student_wel/member4.png" },
-                    { role: "General Member", name: "DANIEL @ HTOO HTET ZAW", image: "images/committee/student_wel/member5.png" },
-                    { role: "General Member", name: "CHUE RYEE EN", image: "images/committee/student_wel/member6.png" },
+                    { role: "General Member", name: "LAW JIA HERNG", image: "images/committee/student_wel/member1.png", quote: "None" },
+                    { role: "General Member", name: "JOSHUA LEE CHENG AN", image: "images/committee/student_wel/member2.png", quote: "" },
+                    { role: "General Member", name: "GOH JAY NING", image: "images/committee/student_wel/member3.png", quote: "" },
+                    { role: "General Member", name: "DANIEL WONG WENG SENG", image: "images/committee/student_wel/member4.png", quote: "" },
+                    { role: "General Member", name: "DANIEL @ HTOO HTET ZAW", image: "images/committee/student_wel/member5.png", quote: "" },
+                    { role: "General Member", name: "CHUE RYEE EN", image: "images/committee/student_wel/member6.png", quote: "" },
                 ],
             },
         ],
@@ -256,6 +256,6 @@ const siteContent = {
 
         // Replace this with your specific Google Calendar Embed URL
         // To get this: Go to G-Cal Settings > Integrate Calendar > Copy "Public URL to this calendar" or Embed code src
-        calendar: "https://calendar.google.com/calendar/embed?src=en.malaysia%23holiday%40group.v.calendar.google.com&ctz=Asia%2FKuala_Lumpur"
+        calendar: "https://calendar.google.com/calendar/embed?src=e3412a49be9e0175532071aac5b55a0c9e75c009c156104af759df5e184a3b40%40group.calendar.google.com&src=en.malaysia%23holiday%40group.v.calendar.google.com&ctz=Asia%2FKuala_Lumpur"
     },
 };

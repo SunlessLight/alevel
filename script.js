@@ -44,7 +44,7 @@ function setActiveLink() {
     });
 }
 
-// Website Content Manager
+// 3. Website Content Manager
 function updateSiteContent() {
     // Helper to set text content
     const setText = (id, text) => {
@@ -140,7 +140,6 @@ function updateSiteContent() {
     // 3. COMMITTEE PAGE
     const hcContainer = document.getElementById("high-council-tree");
     const deptContainer = document.getElementById("dept-roster");
-
     if (hcContainer && siteContent.committee) {
 
         // --- 1. RENDER HIGH COUNCIL (The Pyramid) ---
@@ -158,19 +157,29 @@ function updateSiteContent() {
                 ? "w-40 h-40 md:w-52 md:h-52"
                 : "w-32 h-32 md:w-40 md:h-40";
 
-            const userQuote = member.quote || "Dedicated to serving the A-Level Student Committee"
+            const userQuote = member.quote || "Dedicated to serving the A-Level Student Committee";
 
             card.innerHTML = `
-                <div class="${imgSize} rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] transition-all duration-300 mb-4 shadow-lg p-1 bg-white">
+                <div class="relative mb-4">
                     
-                    <img src="${member.image}" class="w-full h-full object-cover object-top rounded-full">
-                    
-                    <div class="absolute inset-0 bg-[#88113b]/90 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                        <p class="text-white text-xs md:text-sm font-medium italic leading-tight">"${userQuote}"</p>
+                    <div class="${imgSize} rounded-full overflow-hidden border-4 border-gray-100 group-hover:border-[#88113b] group-hover:shadow-[0_0_20px_rgba(136,17,59,0.3)] transition-all duration-300 p-1 bg-white relative z-30">
+                        <img src="${member.image}" class="w-full h-full object-cover object-top rounded-full">
+                    </div>
+
+                    <div class="absolute top-1/2 left-[90%] -translate-y-1/2 w-52 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_8px_30px_rgba(136,17,59,0.15)] border border-[#88113b]/10 z-40 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform translate-x-[-10px] scale-95 group-hover:translate-x-0 group-hover:scale-100 pointer-events-none hidden md:block">
+                        
+                        <div class="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-white/95 transform rotate-45 border-l border-b border-[#88113b]/10"></div>
+                        
+                        <span class="absolute top-2 left-3 text-[#88113b]/20 text-4xl font-serif leading-none -z-10"></span>
+                        
+                        <p class="text-[#88113b] text-sm font-medium italic leading-relaxed relative z-10 pl-2">
+                            "${userQuote}"
+                        </p>
                     </div>
 
                 </div>
-                <h4 class="font-bold text-lg leading-tight text-main">${member.name}</h4>
+
+                <h4 class="font-bold text-lg leading-tight text-main mt-2">${member.name}</h4>
                 <p class="text-xs font-bold text-[#88113b] uppercase tracking-widest mt-1">${member.role}</p>
             `;
             return card;
@@ -179,7 +188,6 @@ function updateSiteContent() {
         // Row 1: President (Index 0)
         const row1 = document.createElement("div");
         row1.className = "flex justify-center w-full relative";
-        // Add a connector line below
         row1.innerHTML = `<div class="absolute -bottom-6 left-1/2 w-0.5 h-6 bg-gray-300"></div>`;
         if (hc[0]) row1.appendChild(createCard(hc[0], "large"));
         hcContainer.appendChild(row1);
@@ -187,7 +195,6 @@ function updateSiteContent() {
         // Row 2: VPs (Index 1 & 2)
         const row2 = document.createElement("div");
         row2.className = "flex justify-center gap-12 md:gap-24 w-full relative pt-2";
-        // Connector line logic
         row2.innerHTML = `<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-1/2 h-4 border-t-2 border-x-2 border-gray-300 rounded-t-xl"></div>`;
         if (hc[1]) row2.appendChild(createCard(hc[1]));
         if (hc[2]) row2.appendChild(createCard(hc[2]));
@@ -217,15 +224,25 @@ function updateSiteContent() {
                 
                 <div class="flex flex-wrap justify-center gap-12 mb-12">`;
 
-            // Add Directors (Updated to match Executive Size)
+            // Add Directors
             dept.leaders.forEach(leader => {
+                const userQuote = leader.quote || "Dedicated to serving the A-Level Student Committee";
+
                 html += `
                     <div class="flex flex-col items-center text-center group w-48 md:w-64">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] transition-all duration-300 mb-4 shadow-lg p-1 bg-white">
-                            <img src="${leader.image}" class="w-full h-full object-cover object-top rounded-full">
-
-                            <div class="absolute inset-0 bg-[#88113b]/90 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                                <p class="text-white text-xs md:text-sm font-medium italic leading-tight">"${userQuote}"</p>
+                        <div class="relative mb-4">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] group-hover:shadow-[0_0_15px_rgba(136,17,59,0.4)] transition-all duration-300 p-1 bg-white relative z-10">
+                                <img src="${leader.image}" class="w-full h-full object-cover object-top rounded-full">
+                            </div>
+                            <div class="absolute top-1/2 left-[90%] -translate-y-1/2 w-52 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_8px_30px_rgba(136,17,59,0.15)] border border-[#88113b]/10 z-40 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform translate-x-[-10px] scale-95 group-hover:translate-x-0 group-hover:scale-100 pointer-events-none hidden md:block">
+                        
+                                <div class="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-white/95 transform rotate-45 border-l border-b border-[#88113b]/10"></div>
+                                
+                                <span class="absolute top-2 left-3 text-[#88113b]/20 text-4xl font-serif leading-none -z-10"></span>
+                                
+                                <p class="text-[#88113b] text-sm font-medium italic leading-relaxed relative z-10 pl-2">
+                                    "${userQuote}"
+                                </p>
                             </div>
                         </div>
                         <h4 class="font-bold text-lg leading-tight text-main">${leader.name}</h4>
@@ -235,18 +252,28 @@ function updateSiteContent() {
 
             html += `</div>`;
 
-            // Add General Members (Updated to match Executive Size)
+            // Add General Members
             if (dept.members && dept.members.length > 0) {
-                html += `
-                <div class="flex flex-wrap justify-center gap-x-8 gap-y-12 max-w-6xl mx-auto">`;
+                html += `<div class="flex flex-wrap justify-center gap-x-8 gap-y-12 max-w-6xl mx-auto">`;
 
                 dept.members.forEach(member => {
+                    const userQuote = member.quote || "Dedicated to serving the A-Level Student Committee";
+
                     html += `
                     <div class="flex flex-col items-center text-center group w-48 md:w-64">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] transition-all duration-300 mb-4 shadow-lg p-1 bg-white">
-                            <img src="${member.image}" class="w-full h-full object-cover object-top rounded-full">
-                            <div class="absolute inset-0 bg-[#88113b]/90 flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                                <p class="text-white text-xs md:text-sm font-medium italic leading-tight">"${userQuote}"</p>
+                        <div class="relative mb-4">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-200 group-hover:border-[#88113b] group-hover:shadow-[0_0_15px_rgba(136,17,59,0.4)] transition-all duration-300 p-1 bg-white relative z-10">
+                                <img src="${member.image}" class="w-full h-full object-cover object-top rounded-full">
+                            </div>
+                            <div class="absolute top-1/2 left-[90%] -translate-y-1/2 w-52 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_8px_30px_rgba(136,17,59,0.15)] border border-[#88113b]/10 z-40 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform translate-x-[-10px] scale-95 group-hover:translate-x-0 group-hover:scale-100 pointer-events-none hidden md:block">
+                        
+                                <div class="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-white/95 transform rotate-45 border-l border-b border-[#88113b]/10"></div>
+                                
+                                <span class="absolute top-2 left-3 text-[#88113b]/20 text-4xl font-serif leading-none -z-10"></span>
+                                
+                                <p class="text-[#88113b] text-sm font-medium italic leading-relaxed relative z-10 pl-2">
+                                    "${userQuote}"
+                                </p>
                             </div>
                         </div>
                         <h4 class="font-bold text-lg leading-tight text-main">${member.name}</h4>
@@ -264,9 +291,12 @@ function updateSiteContent() {
         // --- CORE STRUCTURE (Committee Page) ---
         if (siteContent.committee && siteContent.committee.coreStructure) {
             siteContent.committee.coreStructure.forEach(dept => {
-                setImage(`${dept.id}-img`, dept.image);
-                setText(`${dept.id}-title`, dept.title);
-                setText(`${dept.id}-desc`, dept.description);
+                const imgEl = document.getElementById(`${dept.id}-img`);
+                const titleEl = document.getElementById(`${dept.id}-title`);
+                const descEl = document.getElementById(`${dept.id}-desc`);
+                if (imgEl) imgEl.src = dept.image;
+                if (titleEl) titleEl.textContent = dept.title;
+                if (descEl) descEl.textContent = dept.description;
             });
         }
     }
@@ -456,6 +486,70 @@ function updateSiteContent() {
         // D. Google Calendar Embed
         const calFrame = document.getElementById("calendar-frame");
         if (calFrame) calFrame.src = siteContent.alstarPage.calendar;
+    }
+}
+
+// 4. Newsletter Subscribing Feature
+async function submitNewsletter() {
+    // 1. Get Elements
+    const emailInput = document.getElementById("newsletter-email-input");
+    const btn = document.getElementById("newsletter-sub-btn");
+    const successMsg = document.getElementById("newsletter-success-msg");
+    const errorMsg = document.getElementById("newsletter-error-msg");
+
+    // 2. Reset States
+    successMsg.classList.add("hidden");
+    errorMsg.classList.add("hidden");
+
+    const email = emailInput.value.trim();
+
+    // 3. Simple Validation
+    if (!email || !email.includes("@")) {
+        errorMsg.textContent = "Please enter a valid email address.";
+        errorMsg.classList.remove("hidden");
+        return;
+    }
+
+    // 4. Loading State
+    const originalText = btn.textContent;
+    btn.textContent = "Sending...";
+    btn.disabled = true;
+    btn.classList.add("opacity-75", "cursor-not-allowed");
+
+    // 5. Send Data to Google Sheets
+    // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyyWT4XJQ7CjhLyNEwdy-UZGjSr5PMcAkARv2knu6HkSC9HiKmhvRtmv2Re59YrKwE0/exec";
+
+    try {
+        const formData = new FormData();
+        formData.append("email", email);
+
+        const response = await fetch(SCRIPT_URL, {
+            method: "POST",
+            body: formData
+        });
+
+        if (response.ok) {
+            // Success!
+            emailInput.value = ""; // Clear input
+            successMsg.classList.remove("hidden");
+        } else {
+            throw new Error("Network response was not ok.");
+        }
+    } catch (error) {
+        console.error("Error!", error.message);
+        errorMsg.textContent = "Something went wrong. Please try again.";
+        errorMsg.classList.remove("hidden");
+    } finally {
+        // 6. Reset Button
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.classList.remove("opacity-75", "cursor-not-allowed");
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            successMsg.classList.add("hidden");
+        }, 5000);
     }
 }
 
